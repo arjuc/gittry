@@ -24,7 +24,7 @@ for (var i = 0; i < li.length; i++) {
 }
 */
 
-var secondItem = document.querySelector('.list-group-item:nth-child(2)');
+/*var secondItem = document.querySelector('.list-group-item:nth-child(2)');
 secondItem.style.backgroundColor = 'green';
 var thirdItem = document.querySelector('.list-group-item:nth-child(3)');
 thirdItem.style.visibility = "hidden";
@@ -39,3 +39,18 @@ for(var i =0;i<odd.length;i++)
 {
     odd[i].style.backgroundColor = 'green';
 }
+*/
+var newDiv = document.createElement('div');
+newDiv.className='Hello';
+newDiv.id='Hello1';
+var newDivtext = document.createTextNode('HEllo');
+newDiv.appendChild(newDivtext);
+var container = document.querySelector('header .container');
+var h1 = document.querySelector("header h1");
+container.insertBefore(newDiv,h1);
+
+
+
+var ul = document.querySelector("ul .list-group");
+var li = document.querySelector("ul li");
+ul.insertBefore(newDiv, li);
