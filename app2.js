@@ -16,6 +16,9 @@ function addItem(e) {
   // Get input value
   var newItem = document.getElementById("item").value;
   localStorage.setItem("itemname", newItem);
+  var newItemdesc = document.getElementById("description").value;
+  localStorage.setItem("itemdesc", newItemdesc);
+  newItemdesc = " " + newItemdesc;
 
 
   // Create new li element
@@ -24,6 +27,7 @@ function addItem(e) {
   li.className = "list-group-item";
   // Add text node with input value
   li.appendChild(document.createTextNode(newItem));
+  li.appendChild(document.createTextNode(newItemdesc));
 
   var editBtn = document.createElement("button");
   editBtn.appendChild(document.createTextNode("Edit"));
