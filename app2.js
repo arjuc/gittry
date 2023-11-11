@@ -15,9 +15,15 @@ function addItem(e) {
 
   // Get input value
   var newItem = document.getElementById("item").value;
-  localStorage.setItem("itemname", newItem);
   var newItemdesc = document.getElementById("description").value;
-  localStorage.setItem("itemdesc", newItemdesc);
+  let myobj = {
+    name : newItem,
+    desc : newItemdesc
+
+
+  };
+  let myObj_s = JSON.stringify(myobj)
+  localStorage.setItem("myObj",myObj_s)
   newItemdesc = " " + newItemdesc;
 
 
