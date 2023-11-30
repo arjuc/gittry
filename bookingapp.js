@@ -3,6 +3,8 @@ var itemList = document.getElementById("items");
 
 form.addEventListener("submit", addItem);
 itemList.addEventListener("click", removeItem);
+itemList.addEventListener("click", editItem);
+
 
 function addItem(e) {
   e.preventDefault();
@@ -35,6 +37,9 @@ function addItem(e) {
   li.appendChild(document.createTextNode(name));
   li.appendChild(document.createTextNode(email));
   li.appendChild(document.createTextNode(contact));
+  var editBtn = document.createElement("button");
+  editBtn.appendChild(document.createTextNode("Edit"));
+  editBtn.className = "btn float-right edit";
 
   var deleteBtn = document.createElement("button");
 
@@ -44,6 +49,7 @@ function addItem(e) {
   // Append text node
   deleteBtn.appendChild(document.createTextNode("Delete"));
   li.appendChild(deleteBtn);
+  li.appendChild(editBtn);
 
   // Append li to list
   itemList.appendChild(li);
@@ -57,10 +63,32 @@ function removeItem(e) {
   if (e.target.classList.contains("delete")) {
     if (confirm("Are You Sure?")) {
       var li = e.target.parentElement;
+      
+      
       localStorage.removeItem(li.id);
       itemList.removeChild(li);
     }
   }
+}
+
+//Edit item
+function editItem(e) {
+ if (e.target.classList.contains("edit")) {
+   if (confirm("Are You sure?")) {
+     var li = e.target.parentElement;
+     var obj = JSON.parse(localStorage.getItem(li.id));
+     var fname = document.getElementById('Name');
+     fname.value = obj.name;
+     var femail = document.getElementById("Email");
+     femail.value = obj.email;
+     var fcontact = document.getElementById("Contact");
+     fcontact.value = obj.cont;
+
+     localStorage.removeItem(li.id);
+     itemList.removeChild(li);
+
+   }
+ }
 }
 
 
